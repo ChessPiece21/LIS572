@@ -22,7 +22,7 @@ birth_year  <- 2022 - age #numeric
 # each statement and variable
 # Then print the message to the Console
 
-# Here's an example
+# Here's an example:
 paste("My partner's hometown is", hometown)
       
 # Format the rest of these statements in the same way so you can print them to the console
@@ -31,7 +31,7 @@ paste("My partner was probably born in", birth_year)
 paste("The statement 'my partner likes rain' is", likes_rain)
 
 # Use a built-in R function to print the data type of each variable to the console
-# Here's an example
+# Here's an example:
 typeof(hometown)
 # Format the rest of these statements in the same way so you can print the data type to the console
 typeof(food)
