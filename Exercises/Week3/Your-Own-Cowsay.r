@@ -5,7 +5,7 @@
 # Install and load stringr, styler
 install.packages("stringr")
 install.packages("styler")
-library(stringr)
+library("stringr")
 
 shout <- function(message = "HELLO WORLD.") { #Assigned a default message.
   output <- str_glue("'{message}' \n - 🤡")
