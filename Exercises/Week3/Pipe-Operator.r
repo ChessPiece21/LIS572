@@ -65,3 +65,8 @@ parks_2020 <- np_data %>%
 # Exercise 7
 # Now subtract parks_1979 from parks_2020
 parks_diff <- parks_2020 - parks_1979 #Difference is 8.
+
+# Exercise 8
+# Find the number of regions
+regions <- np_data %>%
+           summarize(n_distinct(Region))
