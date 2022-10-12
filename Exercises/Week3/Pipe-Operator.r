@@ -5,14 +5,14 @@ np_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Dataset
 # View this data frame by clicking on the spreadsheet icon in the Global Environment
 
 # Install tidyverse
-install.packages("tidyverse")
+#install.packages("tidyverse")
 
 # Load dplyr library
-library(dplyr)
+library("dplyr")
 
 # Exercise 1
 # Select 2 columns from the data using a DPLYR function
-# Save this 2-column dataframe to the variable smaller_df
+# Save this 2-column data frame to the variable smaller_df
 # Make sure to use the pipe %>% operator!
 smaller_df <- np_data %>%
               select(Year, RecreationVisits)
@@ -35,8 +35,8 @@ visits_1979 <- np_data %>%
 # Save to a variable called visits_2020
 # You will need to use the pipe %>% operator and multiple dplyr functions! 
 visits_2020 <- np_data %>%
-  filter(Year == 2020) %>%
-  summarize(sum(RecreationVisits))
+               filter(Year == 2020) %>%
+               summarize(sum(RecreationVisits))
 
 # Exercise 4
 # Now subtract visits_1979 from visits_2020
@@ -47,7 +47,7 @@ visits_diff <- visits_2020 - visits_1979
 # As my code shows below, there was a lower number of parks in 1979 than 2020. There are 8 more parks in 2020 than there were in 1963.
 
 # Exercise 5
-# First, filter the dataframe for only values from the year 1979, and then calculate the number of distinct parks for that year
+# First, filter the data frame for only values from the year 1979, and then calculate the number of distinct parks for that year
 # Save to a variable called parks_1979
 # You will need to use the pipe %>% operator and multiple dplyr functions! 
 parks_1979 <- np_data %>%
@@ -55,12 +55,12 @@ parks_1979 <- np_data %>%
               summarize(n_distinct(ParkName)) #55 distinct parks.
 
 # Exercise 6
-# First, filter the dataframe for only values from the year 2020, and then calculate the number of distinct parks for that year
+# First, filter the data frame for only values from the year 2020, and then calculate the number of distinct parks for that year
 # Save to a variable called parks_2020
 # You will need to use the pipe %>% operator and multiple dplyr functions! 
 parks_2020 <- np_data %>%
-  filter(Year == 2020) %>%
-  summarize(n_distinct(ParkName)) #63 distinct parks.
+              filter(Year == 2020) %>%
+              summarize(n_distinct(ParkName)) #63 distinct parks.
 
 # Exercise 7
 # Now subtract parks_1979 from parks_2020
