@@ -20,7 +20,7 @@ typeof(spl_book)
 
 ## 3. Assign the words "Emily St. John Mandel" to a variable called spl_author (1 point)
 spl_author <- "Emily St. John Mandel"
-# typeof(spl_author) #Just to make sure it's the same.
+typeof(spl_author)
 
 ## Imagine that we want to print out a statement that will describe any SPL book and author that we are analyzing, like so: "The SPL book that we are analyzing is [spl_book] by [spl_author]." Let's write some code that will accomplish this task.
 
@@ -56,7 +56,6 @@ spl_sum <- sum(spl_checkouts) #Should be 111
 ## Does this pattern surprise you? Why or not why not? What other information or data would you want to explore after seeing this information? (3 points)
 ## Answer:
 ## I was not entirely surprised that the data went down to 0 in April 2020, given what we knew already about the world and how most services changed to being virtual during the COVID-19 pandemic. Despite this, the visual plot associated with the vector I made helped me understand just how significant of a change the closing of libraries and other institutions during COVID-19 was in our daily lives, as the data is just one bit of information showing that there was no physical or in-person engagement with the library.
-
 ## Additionally, I think that having some sort of information about the book and its content would be helpful or interesting, like extra information dedicated to the book's genre or year (indicated in the original book's data, I assume?), would help bring more context as to why there was a newfound interest in this book picking up when COVID hit -- it was only after Googling it that I realized it was a novel about another pandemic or disease, from which I was even LESS surprised than I was initially about the amount of checkouts of the book over 2020. I think this speaks to the big problem associated with only having a limited amount of data dedicated to one subject, as you don't know the full story or context behind what was selected to analyze, especially data related to books and other cultural materials, as well as people-centered research like LIS and the social sciences, as just listing their names and authors may reduce their significance.
 
 
