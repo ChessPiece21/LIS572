@@ -16,8 +16,9 @@ library(tidyverse)
 # Exercise 1: Filter for all of the Lord of the Rings books and save to a variable.
 filtered_titles <- spl_data %>% filter(str_detect(Title, "Lord of the Rings"))
 
-# Now search for a title that you are interested in!
+# Now search for two titles that you are interested in!
 filtered_titles_2 <- spl_data %>% filter(str_detect(Title, "Pokemon"))
+filtered_titles_3 <- spl_data %>% filter(str_detect(Title, "Marvel"))
 
 ##### Subject Headings
 # How has the Seattle Public Library handled changes in LOC Subject Headings?
