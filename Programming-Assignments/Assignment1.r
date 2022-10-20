@@ -20,7 +20,7 @@ typeof(spl_book)
 
 ## 3. Assign the words "Emily St. John Mandel" to a variable called spl_author (1 point)
 spl_author <- "Emily St. John Mandel"
-typeof(spl_author)
+#typeof(spl_author)
 
 ## Imagine that we want to print out a statement that will describe any SPL book and author that we are analyzing, like so: "The SPL book that we are analyzing is [spl_book] by [spl_author]." Let's write some code that will accomplish this task.
 
