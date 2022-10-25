@@ -1,10 +1,11 @@
 ##############################################################################
 ## Assignment 2: SPL Data & DPLYR
-## Please write your code/responses in the places marked "Your code/response here"
+## Please write your code/responses in the places marked "Your code/response here."
 
 ## This assignment draws on Seattle Public Library circulation data from 2018-2022. The data only includes items that were checked out at least 15 times in a month.
 
-## To explore the circulation data for yourself, see https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6/data
+## To explore the circulation data for yourself, see: 
+## https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6/data
 ##############################################################################
 
 ## Name: Joe Lollo
