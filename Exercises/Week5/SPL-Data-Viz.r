@@ -36,10 +36,14 @@ checkouts_per_year_type <- spl_df %>% group_by(CheckoutYear, MaterialType) %>%
                            summarize(TotalCheckouts = sum(Checkouts, na.rm = TRUE))
 
 # Filter for only specific values
-checkouts_per_year_type <- checkouts_per_year_type %>% filter(MaterialType %in% c("AUDIOBOOK", "BOOK", "EBOOK"))
+checkouts_per_year_type <- checkouts_per_year_type %>% filter(MaterialType %in% c("AUDIOBOOK", "BOOK", "EBOOK")) 
 
 # Exercise 4: Plot checkouts_per_year_type as a scatter plot with ggplot and make the color correspond to the material type
 ggplot(data = checkouts_per_year_type) + 
   geom_point(mapping = aes(x = CheckoutYear, y = TotalCheckouts, color = MaterialType))
+
+# Alternatively:
+ggplot(data = checkouts_per_year_type) + 
+  geom_hex(mapping = aes(x = CheckoutYear, y = TotalCheckouts))
 
 
