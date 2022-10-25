@@ -17,6 +17,8 @@ plot(checkouts_per_year, type = "b")
 # Load ggplot2 library
 # install.packages("ggplot2")
 library("ggplot2")
+# Extra credit: install hexbin for the activity mentioned in class.
+library("hexbin")
 
 # Exercise 2: Plot "checkouts_per_year" with ggplot
 # Make a purple line plot of checkouts
