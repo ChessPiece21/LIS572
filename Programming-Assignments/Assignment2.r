@@ -115,7 +115,7 @@ scifi_checkouts <- scifi_query %>% group_by(CheckoutYear) %>%
                    summarize(Yearly_Checkouts = sum(Checkouts))
 
 # As I suspected, if you view the dataset filtered, grouped, and summarized
-#the way I did it using DPLYR, you can see a confirmation of my hypothesis
+#the way I did it using DPLYR functions, you can see a confirmation of my hypothesis
 #that science fiction-themed materials, at least considered to be SF in the SPL 
 #catalogers' eyes, had an increase in interest during the pandemic (2020-2021), as 
 #more and more people couldn't believe what was happening to it. I would like
