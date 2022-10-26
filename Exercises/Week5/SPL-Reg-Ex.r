@@ -23,30 +23,35 @@ str_extract(sample_years, "\\d{4}")
 
 # Exercise 1: Add a new column to the SPL dataframe called "clean_year"
 # that includes any 4-digit year from the "PublicationYear" column
-spl_data <- spl_data %>% 
-  mutate(clean_year = str_extract(PublicationYear, "\\d{4}"))
-
+spl_data_clean <- spl_data %>% 
+                  mutate(clean_year = str_extract(PublicationYear, "\\d{4}"))
+                  ## \\d{4} needs the new 
+  
 # Exercise 2: Add a new column to the SPL dataframe called "clean_pub_year"
 # but only include *true* publication years from the "PublicationYear" column
+year_count <- spl_data %>% count(PublicationYear)
+
 get_true_pub <- function(year) {
+  case_when(!str_detect(year, "\\?") &
+              !str_detect(year, "\\]") &
+              !str_detect(year, "-") &
+              !str_detect(year, "p") &
+              !str_detect(year, "c") ~
+              str_extract(year, "\\d{4}"))
+}
+
+get_true_pub("2021")
+
+new_spl_data <- spl_data %>% mutate(TruePub = get_true_pub(PublicationYear))
+
+
+# Bonus exercise: Create a new column that indicates whether a title
+# was published by one of the big 5 publishers ()
+get_big_5 <- function(publisher) {
   case_when(
-    !str_detect(year, "\\]",) & 
-      !str_detect(year, "\\?") &
-      !str_detect(year, "-") ~ str_extract(year, "\\d{4}")
+    str_detect(publisher, "Schuster")  ~ "Simon and Schuster",
+    str_detect(publisher, "Penguin|Random")  ~ "Penguin Random House"
   )
 }
 
-spl_data <- spl_data %>% 
-  mutate(clean_pub_year = get_true_pub(PublicationYear))
-
-# Bonus exercise: Create a new column that indicates whether a title
-# was published by one of the big 5 
-publishersget_big_5 <- function(publisher) {
-  
-case_when(
-  str_detect(publisher, "Schuster")  ~ "Simon and Schuster",
-  str_detect(publisher, "Penguin|Random")  ~ "Penguin Random House"
-)
-}
-
-spl_data <- spl_data %>% mutate(big_5 = get_big_5(Publisher))
+new_spl_data <- new_spl_data %>% mutate(Big5Publisher = get_big_5(Publisher))
