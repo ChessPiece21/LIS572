@@ -42,6 +42,7 @@ author_df <- spl_df %>% filter(str_detect(Creator, "Margaret.*Atwood|Atwood.*Mar
   group_by(CheckoutYear, MaterialType) %>%
   summarize(TotalCheckouts = sum(Checkouts))
 
+# Plotting the data for Discord:
 ggplot(data = author_df) + 
   geom_line(mapping = aes(x = CheckoutYear, y = TotalCheckouts, color = MaterialType)) + 
   labs(x = "Checkout Year", y = "Total Checkouts", title = "Margaret Atwood Checkouts at SPL, 2018-2022") + 
