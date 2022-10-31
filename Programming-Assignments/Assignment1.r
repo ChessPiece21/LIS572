@@ -1,11 +1,9 @@
 ##############################################################################
-## Assignment 1: Intro to R
-
+## Assignment 1: Introduction to R
 ## Please write your code/responses in the places marked "Your code/response here"
 
-## This assignment draws on real Seattle Public Library circulation data for Emily St. John Mandel's novel Station Eleven in the year 2020.
+## This assignment draws on the real Seattle Public Library circulation data for Emily St. John Mandel's novel ''Station Eleven'' in the year 2020.
 ## You are going to manipulate this real checkout data to explore different trends.
-## For context, in March 2020, the WHO declared COVID-19 a pandemic, and this novel is a story about a fictional pandemic.
 
 ## To explore the circulation data for yourself, see https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6/data
 ##############################################################################
