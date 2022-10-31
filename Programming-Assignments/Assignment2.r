@@ -2,7 +2,8 @@
 ## Assignment 2: SPL Data and DPLYR
 ## Please write your code/responses over the places marked "Your code/response here."
 
-## This assignment draws on Seattle Public Library circulation data from 2018-2022. The data only includes items that were checked out at least 15 times in a month.
+## This assignment draws on the Seattle Public Library circulation data from 2018 to 2022. 
+## The data only includes items that were checked out at least 15 times in a month.
 
 ## To explore the circulation data for yourself, see: 
 ## https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6/data
