@@ -7,7 +7,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
-## Exercise 1: Load the Publisher's Weekly Translation dataset from the URL below and save it to a variable called `pw_df`
+## Exercise 1: Load the Publisher's Weekly (PW) Translation Dataset from the URL below and save it to a variable called `pw_df`
 # https://github.com/melaniewalsh/Neat-Datasets/blob/main/PW-Translation.csv?raw=true
 # Hint: This CSV file is separated by tabs, not commas
 # You might need to read the documentation for read.csv() or google this question
