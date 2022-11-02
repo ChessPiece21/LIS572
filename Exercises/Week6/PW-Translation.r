@@ -31,8 +31,8 @@ top_10_countries <- books_per_country %>%
 
 help(slice_max)
 
-## Exercise 4: Make an *interactive* bar plot of the 10 countries translated into English 
-# Bonus: customize the interactive tooltip in some way
+## Exercise 4: Make an * interactive * bar plot of the 10 countries translated into English 
+## Bonus: customize the interactive tooltip in some way
 barplot <- ggplot(data = top_10_countries) +
 geom_col(mapping = aes(x = country, y= total.books,
 fill = country))
