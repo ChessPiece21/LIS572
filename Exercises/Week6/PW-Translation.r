@@ -17,11 +17,10 @@ help(read.csv) # To help me.
 ## Try to find a book that you are familiar with
 
 ## Exercise 2: How many books from each country had works translated into English since 2008?
-# Make a dataframe with the total number of books published from each country
-# Save as books_per_country
+## Make a dataframe with the total number of books published from each country
+## Save as books_per_country
 books_per_country <- pw_df %>% group_by(country) %>%
                      summarize(total.books = n())
-
 # France has the most.
 
 ## Exercise 3: 
