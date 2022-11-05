@@ -1,1 +1,1 @@
-All midterm and final programming assignments for the class.
+All midterm programming assignments for the class.
