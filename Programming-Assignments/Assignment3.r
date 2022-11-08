@@ -24,7 +24,7 @@ pw_df <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/
 library("dplyr")
 library("ggplot2")
 #install.packages("plotly") #once per machine, as I'm including it later
-library("plotly")
+library("plotly") #I need this for later parts of this assignment.
 
 ## 3. How many rows are in this dataset?
 # Use a built-in R function to find the number of rows, save it to the variable `num_rows`, then print `num_rows` (1 point)
@@ -167,7 +167,7 @@ top_by_genre <- genre_df %>% filter(language %in% top_languages_vector)
 # Visualize the data using a stacked bar chart. Make it interactive with ggplotly().
 top_7_by_genre <- ggplot(top_by_genre) + 
   geom_col(aes(x = language, y = count, fill = genre), position = "fill") +
-  labs(x = "Author Gender", y = "Number of Books", title = "Genre Distributions in the Top 7 Languages")
+  labs(x = "Genre", y = "Number of Books", title = "Genre Distributions in the Top 7 Languages")
 
 ggplotly(top_7_by_genre) #So that we can interact with it too.
 
