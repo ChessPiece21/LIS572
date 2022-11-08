@@ -113,7 +113,7 @@ translator_gender <- pw_df %>% group_by(trnsl.gend) %>%
 ## 14. Make a bar plot of translator_gender, and add a meaningful title (3 points)
 translator_plot <- ggplot(translator_gender) + 
   geom_col(aes(x = trnsl.gend, y = count, fill = trnsl.gend)) +
-  labs(x = "Author Gender", y = "Number of Books", title = "Gender Distribution of Book Translators, Top 7 Languages")
+  labs(x = "Translator Gender", y = "Number of Books", title = "Gender Distribution of Book Translators, Top 7 Languages")
 
 ggplotly(translator_plot)
 
