@@ -63,5 +63,5 @@ leaflet() %>%
   # Add markers
   addMarkers(lat = spl_locations$latitude,
              lng = spl_locations$longitude,
-             popup = spl_locations$ADDRESS,
-             label = spl_locations$LABEL)
+             popup = spl_locations$NAME,
+             label = paste(spl_locations$NAME, spl_locations$ADDRESS))
