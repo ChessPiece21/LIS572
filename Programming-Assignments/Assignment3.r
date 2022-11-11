@@ -51,7 +51,7 @@ top_languages <- total_languages %>% slice_max(n = 7, order_by = total.books)
 
 ## 7. How many books from each language were published per year? (3 points)
 ## Save as total_languages_per_year
-total_languages_per_year <- pw_df %>% group_by(language, pubdate.yr) %>% 
+total_languages_per_year <- pw_df %>% group_by(pubdate.yr, language) %>% 
   summarize(total.books = n())
 
 ## 8. Now, we need to filter this dataframe for only the top 7 languages (2 points)
@@ -154,8 +154,7 @@ ggplotly(translator_plot)
 
 # Then answer it with code below
 # My Code:
-# Group the original PW data frame by genre and language, count
-#each instance.
+# Group the original PW data frame by genre and language, count each instance.
 genre_df <- pw_df %>% group_by(genre, language) %>% 
   summarize(count = n())
 # Comment: I think I will keep the blanks here because it is super interesting to see how there is one blank language and two blank genres, as
