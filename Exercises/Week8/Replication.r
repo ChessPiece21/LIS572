@@ -14,4 +14,4 @@ library("ggplot2")
 ggplot(data = gender_data) +
   geom_point(aes(x = pub_date, y = percentage, shape = gender, color = gender)) + 
   geom_smooth(aes(x = pub_date, y = percentage, color = gender)) +
-  scale_color_brewer(palette = "Dark2")
+  scale_color_brewer(palette = "Dark2") # To make the color cooler
