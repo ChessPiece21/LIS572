@@ -41,7 +41,7 @@ film_df <- film_df %>% filter(title %in% few_films)
 film_characters <- film_df$character
 
 # Exercise 5: Now run the gender package on these character names, choosing whatever parameters you like, and see what results you get
-predicted_gender <- gender(film_characters, years = 2000, method = "ssa")
+predicted_gender <- gender(film_characters, years = 2015, method = "ssa")
 
 # How well do you think the gender package is working?
 # I don't think it's working well at all. It does not recognize all the characters, especially because of what I picked and how
