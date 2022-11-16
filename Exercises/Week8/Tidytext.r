@@ -35,7 +35,7 @@ es_stopwords
 
 # Exercise 3: Remove stopwords from word_count
 word_count_no_stops <- tidy_talks %>% anti_join(get_stopwords()) %>%
-                       count(word, sort = TRUE)
+  count(word, sort = TRUE)
 
 # Exercise 4: Filter for the top X number of words
 top_words <- word_count_no_stops %>% filter(n > 4707) 
@@ -47,5 +47,28 @@ top_words
 # Change the fill color of the bars
 # Add an overall title and meaningful x, y axis titles
 ggplot(data = top_words) +
-  geom_col(aes(x = n, y = word, fill = word)) +
+  geom_col(aes(x = n, reorder(word, +n), fill = word)) +
   labs(x = "Frequency", y = "Word", title = "The 10 Most Frequent Words in TED Talks")
+
+#Bonus: Plot two speakers against each other with the code below!
+  
+  # First, create a dataframe for plotting word frequency between two speakers
+  
+  plot_texts <- tidy_talks %>%
+  filter(speaker_1 %in% c("Bill Clinton", "Serena Williams")) %>%
+  anti_join(en_stopwords) %>%
+  count(speaker_1, word) %>%
+  group_by(word) %>%
+  filter(sum(n) > 5) %>%
+  ungroup() %>%
+  pivot_wider(names_from = "speaker_1", values_from = "n", values_fill = 0)
+
+# Plot and compare word use between 2 speakers
+#install.packages("ggrepel")
+library(ggrepel)
+
+ggplot(data = plot_texts) +
+  geom_abline(color = "purple") +
+  geom_point(aes(x=`Bill Clinton`, y=`Serena Williams`, label = word)) +
+  # use the special ggrepel geom for nicer text plotting
+  geom_text_repel(aes(x=`Bill Clinton`, y=`Serena Williams`, label = word)) 
