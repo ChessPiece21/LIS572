@@ -42,3 +42,24 @@ word_count_no_stops <- tidy_talks %>% anti_join(get_stopwords()) %>%
 top_words <- word_count_no_stops %>% filter(n > 4707) 
 top_words
 #To get the top 10 words
+
+
+# Exercise 5: Plot the top words as a bar plot with words on the y-axis and frequency on the x-axis
+# Re-order the bars from most to least frequent
+# Change the fill color of the bars
+# Add an overall title and meaningful x, y axis titles
+ggplot(data = top_words) +
+  geom_col(aes(x = n, y = word, fill = word)) +
+  labs(x = "Frequency", y = "Word", title = "Top 10 Words in TED Talks")
+
+# Bonus: Plot two speakers against each other with the code below!
+
+# First, create a dataframe for plotting word frequency between two speakers
+plot_texts <- tidy_talks %>%
+  filter(speaker_1 %in% c("Al Gore", "Serena Williams")) %>%
+  anti_join(en_stopwords) %>%
+  count(speaker_1, word) %>%
+  group_by(word) %>%
+  filter(sum(n) > 5) %>%
+  ungroup() %>%
+  pivot_wider(names_from = "speaker_1", values_from = "n", values_fill = 0)
