@@ -1,0 +1,37 @@
+# TidyText Tutorial
+# https://juliasilge.shinyapps.io/learntidytext/#section-thank-you-for-coming-to-my-ted-talk
+
+# TED Talk data comes from:
+# https://culturalanalytics.org/article/11044
+# https://github.com/kinnaird-laudun/data/blob/main/Release_v0/TEDonly_speakers_final.csv
+
+# Load TED Talk data
+ted_talks <- read.csv("https://raw.githubusercontent.com/kinnaird-laudun/data/main/Release_v0/TEDonly_speakers_final.csv", stringsAsFactors = FALSE)
+
+install.packages("tidytext")
+library(tidytext)
+library(tidyverse)
+library(dplyr)
+library(stringr)
+
+
+# Exercise 1: Split the text column into one word per row 
+tidy_talks <- ted_talks %>% unnest_tokens(word, text)
+
+
+# Exercise 2:Count how often each word appears
+word_count <- tidy_talks %>% count(word, sort = TRUE)
+
+## STOPWORDS
+install.packages("stopwords")
+library("stopwords")
+
+en_stopwords <- data.frame(word = stopwords(language = "en", source = "snowball"))
+
+zh_stopwords <- data.frame(word = stopwords(language = "zh", source = "misc"))
+
+es_stopwords <- data.frame(word = stopwords(language = "es"))
+
+View(en_stopwords)
+View(zh_stopwords)
+View(es_stopwords)
