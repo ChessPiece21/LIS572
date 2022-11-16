@@ -6,8 +6,8 @@
 library("dplyr")
 
 # Load data
-texts <- read.csv("https://raw.githubusercontent.com/melaniewalsh/lis572-au22/main/data/fleshingout_titles.csv")
-authors <- read.csv("https://raw.githubusercontent.com/melaniewalsh/lis572-au22/main/data/fleshingout_authors.csv")
+texts <- read.csv("https://raw.githubusercontent.com/melaniewalsh/lis572-au22/main/data/fleshingout_titles.csv", stringsAsFactors = FALSE)
+authors <- read.csv("https://raw.githubusercontent.com/melaniewalsh/lis572-au22/main/data/fleshingout_authors.csv", stringsAsFactors = FALSE)
 
 # Exercise 1: Join the texts and authors dataframes together
 joined <- left_join(texts, authors, by = "author_id")
