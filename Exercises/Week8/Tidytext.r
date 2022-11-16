@@ -35,3 +35,7 @@ es_stopwords <- data.frame(word = stopwords(language = "es"))
 View(en_stopwords)
 View(zh_stopwords)
 View(es_stopwords)
+
+# Exercise 3: Remove stopwords from word_count
+word_count_no_stops <- tidy_talks %>% anti_join(get_stopwords()) %>%
+                       count(word, sort = TRUE)
