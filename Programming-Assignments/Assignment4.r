@@ -76,3 +76,72 @@ ggplotly(ratings_vs_reviews, tooltip = "text")
 #around the middle of the graph/data, and the data was spread out more near the higher numbers. I think the regression
 #line in particular is interesting because it shows a weak to medium positive correlation, possibly because of the high amount of
 #ratings near the middle.
+
+## 9. Now it's your turn! Ask your own question about the Goodreads data, and then answer it with code (4 points)
+## Your question in English language words here
+# My Question: Four books with a very large fandom on the Internet that are represented in this data are the Harry Potter
+#series, the Hunger Games series, Percy Jackson & the Olympians, and the Lord of the Rings series. Which of these franchises 
+#have a higher average rating, as represented on Goodreads, and are there any specific books in the series that are considered 
+#outliers because of extremely high or low average ratings?
+
+# My Answer:
+# Create a vector for each book series, based on official_title in the Goodreads data frame.
+hp_vector <- c("Harry Potter and the Philosopher's Stone", "Harry Potter and the Chamber of Secrets",
+             "Harry Potter and the Prisoner of Azkaban", "Harry Potter and the Goblet of Fire", 
+             "Harry Potter and the Order of the Phoenix", "Harry Potter and the Half-Blood Prince",
+             "Harry Potter and the Deathly Hallows")
+
+hg_vector <- c("The Hunger Games", "Catching Fire", "Mockingjay")
+
+pjo_vector <- c("The Lightning Thief", "The Sea of Monsters", "The Titan's Curse", "The Battle of the Labyrinth", "The Last Olympian")
+
+lotr_vector <- c("The Fellowship of the Ring", "The Two Towers", "The Return of the King", "The Hobbit or There and Back Again")
+
+# Create small data frames based on the title and add a series indicator for each series plus a custom indicator to join them later.
+hp_df <- goodreads_df %>% filter(original_title %in% hp_vector) %>%
+         mutate(Series = "Harry Potter")
+  
+hg_df <- goodreads_df %>% filter(original_title %in% hg_vector) %>%
+         mutate(Series = "Hunger Games")
+
+pjo_df <- goodreads_df %>% filter(original_title %in% pjo_vector) %>%
+          mutate(Series = "Percy Jackson")
+
+lotr_df <- goodreads_df %>% filter(original_title %in% lotr_vector) %>%
+           mutate(Series = "Lord of the Rings")
+
+# Use the full_join function to combine the data frames twice. This isn't the perfect method, but it's the only way I can combine them.
+indicators <- c("Series", "original_title", "average_rating", "ratings_count")
+combined_1 <- full_join(hp_df, hg_df, by = indicators)
+combined_2 <- full_join(pjo_df, lotr_df, by = indicators)
+
+# Create combined_books, which combines all the data frames also using a full_join.
+combined_books <- full_join(combined_1, combined_2, by = indicators)
+
+# To comment on this, I used the indicators to join the data frames by multiple parameters, specifically the ones
+#I knew I was going to use in my visualizations.
+
+# Plot the data in ggplot and give meaningful names to the title and axes. Save as a variable so it can be used with plotly.
+goodreads_plot <- ggplot(data = combined_books) +
+                  geom_point(mapping = aes(x = average_rating, y = ratings_count, text = original_title, color = Series)) +
+                  labs(x = "Average Rating", y = "Ratings Count", title = "Average Ratings of Popular Fantasy Book Series on Goodreads, By Series")
+
+# Make the plot interactive after saving it, using ggplotly and the tooltip to see the data points.
+ggplotly(goodreads_plot, tooltip = "text")
+
+## 10. Were you able to answer your question? What do the patterns or results mean? Why does this question matter? Answer in at least 2-3 sentences (3 points)
+# My Answer:
+# This question was one that I came up with easily, but was rather difficult to carry out. I was confused as to how to combine the data frames into one before I settled on
+#making a vector of parameters that I knew I would visualize. I think it's funny that my prediction was actually incorrect, as Harry Potter has the highest average ranges 
+#while The Hunger Games has the lowest (and the largest variance). Percy Jackson and LOTR are squarely in the middle, with LOTR having a generally higher average. This surprises
+#me because of J.K. Rowling's controversies led to many people regretting being fans of the books and movies, but at the same time I actually think that 
+#this distribution proves that there are people able to separate the art from the artist, or at least make their own meanings out of these iconic books, because people still give them
+#higher ratings. 
+
+# Another interesting data point to talk about is that the first books in each series -- The Hobbit, The Lightning Thief, The Hunger Games, and Philosopher's Stone -- have a higher count of 
+#ratings than any other books in the series.
+
+# This question matters because it shows the presence of multiple fandoms on Goodreads, which can skew the ratings of books towards a higher or more positive trend than they would be
+#in critic circles, for example. The rise of amateur criticism and literary fan culture that was caused by online reader networks such as Goodreads is ultimately a good thing, in my opinion,
+#for literature's presence and legacy because it is far more participatory than what rather elitist hubs for the criticism and appreciation of literature we had in the past. I would love to
+#continue researching this subject.
