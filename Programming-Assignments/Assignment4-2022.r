@@ -1,6 +1,6 @@
 ##############################################################################
-## Assignment 5: Text Analysis of Your Favorite Book 
-# (that's on Project Gutenberg)
+## Assignment 4: Text Analysis of Your Favorite Book 
+# (From Project Gutenberg)
 
 ## In this assignment, you will be calculating the most frequent words in a text of your choice from Project Gutenberg, making a bar plot of top words, and making an argument about what these top words represent or reveal about your text.
 # https://www.gutenberg.org/ebooks/search/?sort_order=downloads
@@ -89,8 +89,9 @@ top_words <- meaningful_words %>% filter(n > 90)
 # And add an overall title and meaningful x, y axis titles
 # Then export and submit to Gradescope when you're finished
 ggplot(top_words) +
-  geom_col(aes(x = n, reorder(word, +n), fill = "red")) +
+  geom_col(aes(x = n, y = reorder(word, +n)), fill = "#00693e") +
   labs(x = "Word Frequency", y = "Word", title = "The Most Frequent Word in Mary Shelley's Frankenstein: Is It \"Alive\"?")
+#A nice Frankenstein-themed green.
   
 # 8. Answer the following questions in 4 or more sentences. (4 points)
 # What do you think the top words reveal or represent about your text, if anything?
