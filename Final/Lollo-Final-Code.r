@@ -69,16 +69,9 @@ ggplotly(bottom_heroes_plot)
 # Sombra is considered by fans to be one of the "most annoying" characters to fight against in-game because of her abilities, but the data doesn't show that at all, just that she's among the lowest picked.
 # (Also, Echo is one of the characters I main, I'm offended...)
 
-# My last question has to do with Play of the Game (POTG) award rates as they relate to pick rates, because I wonder if the highest picked Heroes also have the highest picked POTGs.
-## Part 5: Top Play of the Game Rates.
-# Filter using DPLYR so that the Heroes with the top 10 POTG rates appear in the final graph.
-top_potgs <- ow2_df %>% filter(POTG_Rate > 10.54) # Using the actual 10th data point.
+# Let's see what happens if we view this as a boxplot!
+gender_boxplot <- ggplot(ow2_df, aes(x = Gender, y = Pick_Rate, color = Gender)) + geom_boxplot() +
+  labs(x = "Role", y = "Pick Rate", title = "Distribution of Play Rates by Hero Gender")
 
-# Create interactive plot of POTG rates.
-potg_plot <- ggplot(top_potgs) + 
-  geom_col(aes(x = POTG_Rate, y = reorder(Hero,+POTG_Rate), fill = Role)) + 
-  labs(x = "POTG Rate", y = "Hero Name", title = "Top Play of the Game Rates in Overwatch 2")
-
-ggplotly(potg_plot)
-# Interesting, only half of the top picked heroes have the top POTG rates.
-# Also Support heroes are really being done dirty in this plot lmao. 
+ggplotly(gender_boxplot) 
+# Females have the widest range, but males have the highest average.
