@@ -52,6 +52,7 @@ gender_plot <- ggplot(heroes_by_gender) +
   geom_col(aes(x = Avg_Pick_Rate, y = reorder(Gender, +Avg_Pick_Rate), fill = Gender)) +
   labs(x = "Average Pick Rate", y = "Hero Gender", title = "Average Play Rate by Hero Gender")
 
+# Make the plot interactive.
 ggplotly(gender_plot)
 
 # Now let's look at the bottom pick rates. I kinda want to see this distribution...
