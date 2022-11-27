@@ -1,6 +1,6 @@
 ## LIS 572 Final Data Analysis: Overwatch 2 Hero Play Rates
 # by Joe Lollo
-# Version 1: November 27, 2022
+# Version 3: updated November 27, 2022
 
 # Load all relevant libraries
 #install.packages(tidyverse) # Once per machine.
