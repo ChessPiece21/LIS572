@@ -1,3 +1,3 @@
-# Cheers, Love! The Analyst's Here: Analyzing 'Overwatch 2' Play Rates
-
+# Cheers, Love! The Analyst's Here!
+## Using Data Science Methods to Assess Overwatch 2 Play Rates
 If you want to play around with the data, it is located in the "ow2-2022.csv" file.
