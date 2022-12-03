@@ -10,6 +10,8 @@ library("plotly")
 
 # Load the CSV into a data frame
 ow2_df <- read.csv("https://raw.githubusercontent.com/ChessPiece21/LIS-572/main/Final/ow2-2022.csv", stringsAsFactors = FALSE)
+# Note: I had to change the names of Soldier.76 and D.va, as they appear in the original dataset, to "Soldier 76" and "D-va," since
+#the R console was having difficulty recognizing those characters as names.
 
 ## Part 1: OW2 Heroes by Pick Rate.
 # Filter using DPLYR so that the top 10 Heroes appear in the final graph.
@@ -37,7 +39,7 @@ hero_role_plot <- ggplot(heroes_by_role) +
 # Make the plot interactive.
 ggplotly(hero_role_plot)
 
-# Already interesting that Offense heroes have the highest, as expected, but DEFENSE, out of the other 3, are nearing -- is this because of two of them (Hanzo and Bastion) being outliers?
+# Already interesting that Offense heroes have the highest, as expected, but DEFENSE, out of the other 3, are nearing -- is this because of two of them (Hanzo and Bastion) being known outliers?
 # This begs the question...what would OW2_DF grouped by role look like in a boxplot?
 hero_boxplot <- ggplot(ow2_df, aes(x = Role, y = Pick_Rate, color = Role)) + geom_boxplot() +
   labs(x = "Role", y = "Play Rate", title = "Distribution of Play Rates by Hero Role")  +
@@ -47,6 +49,19 @@ hero_boxplot <- ggplot(ow2_df, aes(x = Role, y = Pick_Rate, color = Role)) + geo
 ggplotly(hero_boxplot) # Yep, I knew it -- Defense has a wider range than the rest. Mercy is an outlier.
 
 ## Part 3: Average Pick Rates by Gender.
+# Make new data frame grouping Heroes by gender without pick rate, just to see the count of each gender.
+gender_df <- ow2_df %>% group_by(Gender) %>% summarize(count = n())
+
+gender_count_plot <- ggplot(gender_df) +
+  geom_col(aes(x = count, y = reorder(Gender, +count), fill = Gender)) +
+  labs(x = "Number of Heroes", y = "Hero Gender", title = "Distribution of Overwatch 2 Heroes by Gender") +
+  coord_flip() +
+  scale_color_brewer(palette = "Set1")
+
+ggplotly(gender_count_plot)
+
+# More female Heroes than male heroes, but what does that mean by ?
+
 # Group the original data frame by Hero gender, calculate the mean pick rate and save it in a new variable.
 heroes_by_gender <- ow2_df %>% group_by(Gender) %>% summarize(Avg_Pick_Rate = mean(Pick_Rate))
 
@@ -169,7 +184,6 @@ ggplotly(bottom_heroes_plot)
 
 # Now THAT is interesting! Even if Offense heroes in OW2 have the highest average pick rate, an Offense hero has the lowest pick rate of all!
 # Sombra is considered by fans to be one of the "most annoying" characters to fight against in-game because of her abilities, but the data doesn't show that at all, just that she's among the lowest picked.
-# (Also, Echo is one of the characters I main, I'm offended...)
 
 # Upload ggplotly plots to the Plotly API:
 Sys.setenv("plotly_username" = "JoeLollo21")
@@ -177,6 +191,7 @@ Sys.setenv("plotly_api_key" = "StG9GebmLPqXjbdj7kyB")
 
 api_create(top_heroes_plot, filename = "Top OW2 Heroes")
 api_create(bottom_heroes_plot, filename = "Bottom OW2 Heroes")
+api_create(gender_count_plot, fielname = "OW2 Heroes By Gender")
 api_create(gender_plot, filename = "OW2 Play Rate By Gender")
 api_create(hero_role_plot, filename = "OW2 Play Rate By Roles")
 api_create(hero_boxplot, filename = "Hero Role Boxplot")
