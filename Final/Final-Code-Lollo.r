@@ -1,6 +1,6 @@
 ## LIS 572 Final Data Analysis: Overwatch 2 Hero Play Rates
 # by Joe Lollo
-# Version 3: updated November 27, 2022
+# Version 4: updated December 3, 2022
 
 # Load all relevant libraries
 #install.packages(tidyverse) # Once per machine.
@@ -185,10 +185,12 @@ ggplotly(bottom_heroes_plot)
 # Now THAT is interesting! Even if Offense heroes in OW2 have the highest average pick rate, an Offense hero has the lowest pick rate of all!
 # Sombra is considered by fans to be one of the "most annoying" characters to fight against in-game because of her abilities, but the data doesn't show that at all, just that she's among the lowest picked.
 
-# Upload ggplotly plots to the Plotly API:
+## Final Extra Part: Uploading interactive plots for my blog.
+# Create system/API key for Plotly website:
 Sys.setenv("plotly_username" = "JoeLollo21")
 Sys.setenv("plotly_api_key" = "StG9GebmLPqXjbdj7kyB")
 
+# Upload ggplotly plots to the Plotly API, with titles:
 api_create(top_heroes_plot, filename = "Top OW2 Heroes")
 api_create(bottom_heroes_plot, filename = "Bottom OW2 Heroes")
 api_create(gender_count_plot, fielname = "OW2 Heroes By Gender")
