@@ -1,6 +1,6 @@
 ## LIS 572 Final Data Analysis: Overwatch 2 Hero Play Rates
 # by Joe Lollo
-# Version 4: updated December 3, 2022
+# Version 5: updated December 4, 2022
 
 # Load all relevant libraries
 #install.packages(tidyverse) # Once per machine.
@@ -10,8 +10,21 @@ library("plotly")
 
 # Load the CSV into a data frame
 ow2_df <- read.csv("https://raw.githubusercontent.com/ChessPiece21/LIS-572/main/Final/ow2-2022.csv", stringsAsFactors = FALSE)
-# Note: I had to change the names of Soldier.76 and D.va, as they appear in the original dataset, to "Soldier 76" and "D-va," since
-#the R console was having difficulty recognizing those characters as names.
+# This dataset has a lot of interesting things I would want to look at if I had all the time in the world, such as kill per game (KPG),
+#healing per game (HPG), and "Play of the Game" rate (POTG rate), but I think for now, the variables I will choose to look at are Hero gender,
+#Hero role, and play rate. Categorical variables like gender and Hero role are better than quantitative if I want to look at how Overwatch Heroes 
+#are represented both in the game and in the gameplay, so I decided to look at those in conjunction with play rate to build data narratives 
+#surrounding what I know about Overwatch's player culture.
+# As far as insight of those categories goes, I think it's interesting that there's a nearly equal male-to-female ratio in Hero gender, but that
+#the robot heroes are labeled as "Nonbinary." Possibly an oversight from the site that curated this CSV? But I can't think of anything better to
+#refer to them by...
+# The distribution of Hero role is pretty balanced right now, as the four Heroes introduced in OW2 all cover the four types of Heroes that already
+#existed and there's a fairly equal number of each of them, although there is a slightly higher amount of Offense Heroes.
+# I think that Defense Heroes will have the lowest play rates on average since they are the least popular in-game. Bastion and Hanzo are definite outliers 
+#though, since they are used often by players because they're generally accessible characters and also popular in memes and fan material. Support will be the
+#second lowest, followed by Tanks, and lastly Offense, in my opinion.
+# I also cleaned the data, as I had to change the names of Soldier.76 and D.va, as they appear in the original dataset and in-game, to "Soldier 76" and "D-va," 
+#since the R console was having difficulty recognizing those characters as names.
 
 ## Part 1: OW2 Heroes by Pick Rate.
 # Filter using DPLYR so that the top 10 Heroes appear in the final graph.
