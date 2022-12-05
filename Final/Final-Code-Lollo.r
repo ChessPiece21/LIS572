@@ -89,8 +89,7 @@ gender_count_plot <- ggplot(gender_df) +
 
 ggplotly(gender_count_plot, tooltip = "text")
 
-# More female Heroes than male Heroes, despite being nearly equal, 
-#but are their pick rates relative?
+# More female Heroes than male Heroes, despite being nearly equal, but are their pick rates this close, too, on average?
 
 # Group the original data frame by Hero gender, calculate the mean pick rate and save it in a new variable.
 heroes_by_gender <- ow2_df %>% group_by(Gender) %>% summarize(Avg_Pick_Rate = mean(Pick_Rate))
