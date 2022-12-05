@@ -116,6 +116,7 @@ gender_boxplot <- ggplot(ow2_df, aes(x = Gender, y = Pick_Rate, color = Gender))
 ggplotly(gender_boxplot) # Females have the widest range, but males have the highest average.
 
 # Now let's look at the bottom pick rates. I kinda want to see this distribution...
+
 ## Part 4: Bottom 10 Pick Rates.
 bottom_heroes <- ow2_df %>% filter(Pick_Rate < 7.15) # Estimating the lowest pick rates using a benchmark.
 
