@@ -1,6 +1,6 @@
 ## LIS 572 Final Data Analysis: Overwatch 2 Hero Play Rates
 # by Joe Lollo
-# Version 6: updated December 5, 2022
+# Version 7: updated December 5, 2022
 
 # Load all relevant libraries
 #install.packages(tidyverse) # Once per machine.
@@ -85,11 +85,12 @@ gender_count_plot <- ggplot(gender_df) +
                              "\nNumber of Heroes: ", Count))) +
   labs(x = "Number of Heroes", y = "Hero Gender", title = "Distribution of Overwatch 2 Heroes by Gender") +
   coord_flip() +
-  scale_color_brewer(palette = "Set1")
+  scale_fill_brewer(palette = "Set1")
 
 ggplotly(gender_count_plot, tooltip = "text")
 
-# More female Heroes than male heroes, but what does that mean by ?
+# More female Heroes than male Heroes, despite being nearly equal, 
+#but are their pick rates relative?
 
 # Group the original data frame by Hero gender, calculate the mean pick rate and save it in a new variable.
 heroes_by_gender <- ow2_df %>% group_by(Gender) %>% summarize(Avg_Pick_Rate = mean(Pick_Rate))
@@ -128,7 +129,8 @@ bottom_heroes_plot <- ggplot(bottom_heroes) +
                              "\nHero Role: ", Role,
                              "\nPlay Rate: ", Pick_Rate,"%"))) +
   labs(x = "Play Rate", y = "Hero Name", title = "Lowest Play Rates of Overwatch 2 Heroes") +
-  scale_fill_brewer(palette = "Set1")
+  scale_fill_brewer(palette = "Set1") +
+  scale_x_continuous(limits = c(0, 10))
 
 # Make the plot interactive. 
 ggplotly(bottom_heroes_plot, tooltip = "text")
